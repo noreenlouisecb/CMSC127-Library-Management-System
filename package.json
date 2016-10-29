@@ -1,0 +1,17 @@
+{
+  "name": "127S2LGRP3",
+  "version": "0.0.0",
+  "description": "CMSC127Project(LMS)",
+  "main": "index.js",
+  "dependencies": {
+    "express": "~4.13.3",
+    "jsonfile": "^2.2.3",
+    "pg": "~4.4.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "S2LGRP3.BUNDOC.SEVILLA.TOMAGOS",
+  "license": "MIT"
+}

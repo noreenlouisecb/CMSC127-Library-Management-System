@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library Management System</title>
+	<!-- BOOTSTRAP STYLES-->
+    <link href="../css/bootstrap.css" rel="stylesheet" />
+     <!-- FONTAWESOME STYLES-->
+    <link href="../css/font-awesome.css" rel="stylesheet" />
+     <!-- MORRIS CHART STYLES-->
+   
+        <!-- CUSTOM STYLES-->
+    <link href="../css/custom.css" rel="stylesheet" />
+     <!-- GOOGLE FONTS-->
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+     <!-- TABLE STYLES-->
+    <link href="../scripts/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/admin">LMS</a> 
+            </div>
+  <div style="color: white;
+padding: 15px 50px 5px 50px;
+float: right;
+font-size: 16px;"><a href="/" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+        </nav>   
+           <!-- /. NAV TOP  -->
+                <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                <li class="text-center">
+                    <img src="../img/find_user.png" class="user-image img-responsive"/>
+                    <li>
+                        <a  href="/admin"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a class="active-menu"  href="/admin/addbook"><i class="fa fa-plus fa-3x"></i> Add A Book</a>
+                    </li>
+                    <li>
+                        <a href="/admin/allborrowers"><i class="fa fa-users fa-3x"></i> View All Borrowers</a>
+                    </li> 
+                    <li>
+                    		<a href="/admin/approveborrowers"><i class="fa fa-check fa-3x"></i> Approve Account </a>
+                    </li>
+                     <li>
+                        <a  href="/admin/allbooks"><i class="fa fa-book fa-3x"></i> View All Books</a>
+                    </li>
+                    <li>
+                        <a  href="/admin/borrowedbooks"><i class="fa fa-list fa-3x"></i> View All Borrowed Books</a>
+                    </li>
+                           <li  >
+                        <a   href="/admin/duebooks"><i class="fa fa-exclamation-triangle fa-3x"></i> View Books Due For Return</a>
+                    </li>  
+                    <li>
+                        <a href="#"><i class="fa fa-cog fa-3x"></i> Account Settings<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">View Account</a>
+                            </li>
+                            <li>
+                                <a href="#">Edit Account</a>
+                            </li>
+                        </ul>
+                      </li>   
+                </ul>
+               
+            </div>
+            
+        </nav>  
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper" >
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                     <h2>Add Book</h2>   
+                        <h5 id="intro">Welcome Jhon Deo , Love to see you back. </h5>
+                       
+                    </div>
+                </div>
+                 <!-- /. ROW  -->
+                 <hr />
+               
+            <div class="row">
+                <div class="col-md-12">
+                    <!---yo---->
+                    <form action="#" method="POST">
+                    <div class="form-group">
+                        <label>Book Name</label>
+                        <input type="text" name="bkname" class="form-control"><br /> 
+                        <label>Author</label>
+                        <div class="input_fields_wrap">
+                            <button type = "button" class="add_field_button">
+                            +
+                            </button>
+                            <div> 
+                            <input type="text" name="bkauthor[]" class="form-control"><br/>
+                            <div>   
+                        </div>
+                        <div id="author">
+                        </div>
+
+                        <label>Publisher</label>
+                        <input type="text" name="bkpub" class="form-control"><br />   
+                        <label>Year Published</label>
+                        <input type="text" name="bkyrpub" class="form-control"><br />  
+                        <label>Genre</label>
+                        <div class="input_fields_wrap">
+                            <button type = "button" class="g_add_field_button">
+                            +
+                            </button>
+                            <div> 
+                            <input type="text" name="bkgenre[]" class="form-control"><br/>
+                            <div>   
+                        </div>
+                        <div id="genre">
+                        </div> 
+                        <label>Number Of Copies</label>
+                        <input type="text" name="nobkcpy" class="form-control"><br />  
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Add To Books</button>
+                        <button type="reset" class="btn btn-default">Reset Form</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+                
+        </div>
+               
+    </div> 
+             <!-- /. PAGE INNER  -->
+         <!-- /. PAGE WRAPPER  -->
+     <!-- /. WRAPPER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <script>
+    
+    </script>
+    <!-- JQUERY SCRIPTS -->
+    <script src="../scripts/jquery-1.10.2.js"></script>
+      <!-- BOOTSTRAP SCRIPTS -->
+    <script src="../scripts/bootstrap.min.js"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="../scripts/jquery.metisMenu.js"></script>
+     <!-- DATA TABLE SCRIPTS -->
+    <script src="../scripts/dataTables/jquery.dataTables.js"></script>
+    <script src="../scripts/dataTables/dataTables.bootstrap.js"></script>
+        <script>
+            $(document).ready(function () {
+            $.getJSON("http://localhost:3000/admin/loggedIn", function(admin){
+                        $('#intro').text("Welcome " + admin.alname + ", " + admin.afname);
+                    });    
+
+                $('#dataTables-example').dataTable();
+           
+            var max_fields1      = 10; //maximum input boxes allowed
+            var max_fields2      = 10;
+            var wrapper         = $("#input_fields_wrap"); //Fields wrapper
+            var add_button      = $(".add_field_button"); //Add button ID
+            
+            var x = 1; //initlal text box count
+            var y = 1
+            $(add_button).click(function(e){ //on add input button click
+                e.preventDefault();
+
+                if(x < max_fields1){ //max input box allowed
+                    x++; //text box increment
+                    $("#author").append('<div><input type="text" name="bkauthor[]" class="form-control"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
+                }
+            });
+            $(".g_add_field_button").click(function(e){ //on add input button click
+                e.preventDefault();
+
+                if(y < max_fields2){ //max input box allowed
+                    y++; //text box increment
+                    $("#genre").append('<div><input type="text" name="bkgenre[]" class="form-control"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
+                }
+            });    
+            $("#author").on("click",".remove_field", function(e){ //user click on remove text
+                    e.preventDefault(); $(this).parent('div').remove(); x--;
+             });
+            $("#genre").on("click",".remove_field", function(e){ //user click on remove text
+                    e.preventDefault(); $(this).parent('div').remove(); y--;
+                });
+            });
+            </script>
+         <!-- CUSTOM SCRIPTS -->
+    <script src="../scripts/custom.js"></script> 
+</body>
+</html>

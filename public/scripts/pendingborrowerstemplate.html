@@ -1,0 +1,20 @@
+<tr class="book odd gradeX">
+	<td> ${ borrowerid } </td>
+	<td> ${ blname } </td>
+	<td> ${ bfname } </td>
+	<td> ${ bpassword } </td>
+	<td> <center>
+		<form method="POST">
+			<input type="hidden" name="action" value="ACCEPT" />
+			<input type="hidden" name="borrower" value=${borrowerid} />
+			<button type="submit" class="btn btn-success"> <span class="glyphicon glyphicon-ok-circle"> </span> </button> 
+		</form>
+	</center> </td>
+	<td> <center>
+		<form method="POST">
+			<input type="hidden" name="action" value="REJECT" />
+			<input type="hidden" name="borrower" value=${borrowerid} />
+			<button type="submit" class="btn btn-danger"> <span class="glyphicon glyphicon-ban-circle"> </span> </button> 
+		</form>
+	</center> </td>
+</tr>

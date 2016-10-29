@@ -1,0 +1,11 @@
+<hr/>
+<h4> <strong> Title : ${ bookname } </strong> </h4>
+<h5> Author(s) : ${ bookauthor } </h5>
+<h5> Genre(s) : ${ bookgenre } </h5>
+<h5> Publisher : ${ publisher } ( ${ yearpublished } ) </h5>
+<h5> Number of Book Copy : ${ nobkcopy } </h5>
+<form method="POST">
+	<input type="hidden" name="book" value=${bookid} />
+	<input type="hidden" name="qty" value=${nobkcopy} />
+	<button class="btn btn-success" type="submit"> Borrow </button>
+</form>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library Management System</title>
+	<!-- BOOTSTRAP STYLES-->
+    <link href="../css/bootstrap.css" rel="stylesheet" />
+     <!-- FONTAWESOME STYLES-->
+    <link href="../css/font-awesome.css" rel="stylesheet" />
+     <!-- MORRIS CHART STYLES-->
+   
+        <!-- CUSTOM STYLES-->
+    <link href="../css/custom.css" rel="stylesheet" />
+     <!-- GOOGLE FONTS-->
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+     <!-- TABLE STYLES-->
+    <link href="../scripts/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/admin">LMS</a> 
+            </div>
+  <div style="color: white;
+padding: 15px 50px 5px 50px;
+float: right;
+font-size: 16px;"><a href="/" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+        </nav>   
+           <!-- /. NAV TOP  -->
+                <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                <li class="text-center">
+                    <img src="../img/find_user.png" class="user-image img-responsive"/>
+                    </li>
+                    <li>
+                        <a  href="/admin"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="/admin/addbook"><i class="fa fa-plus fa-3x"></i> Add A Book</a>
+                    </li>
+                    <li>
+                        <a class="active-menu"  href="/admin/allborrowers"><i class="fa fa-users fa-3x"></i> View All Borrowers</a>
+                    </li> 
+                    <li>
+                    		<a href="/admin/approveborrowers"><i class="fa fa-check fa-3x"></i> Approve Account </a>
+                    </li>
+                     <li>
+                        <a  href="/admin/allbooks"><i class="fa fa-book fa-3x"></i> View All Books</a>
+                    </li>
+                    <li>
+                        <a  href="/admin/borrowedbooks"><i class="fa fa-list fa-3x"></i> View All Borrowed Books</a>
+                    </li>
+                           <li  >
+                        <a   href="/admin/duebooks"><i class="fa fa-exclamation-triangle fa-3x"></i> View Books Due For Return</a>
+                    </li>     
+                    <li>
+                        <a href="#"><i class="fa fa-cog fa-3x"></i> Account Settings<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">View Account</a>
+                            </li>
+                            <li>
+                                <a href="#">Edit Account</a>
+                            </li>
+                        </ul>
+                      </li>   
+                </ul>
+               
+            </div>
+            
+        </nav>  
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper" >
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                     <h2>View All Borrowers</h2>   
+                        <h5 id="intro">Welcome Jhon Deo , Love to see you back. </h5>
+                       
+                    </div>
+                </div>
+                 <!-- /. ROW  -->
+                 <hr />
+           <div class="row">
+                <div class="col-md-12">
+                    <!-- Advanced Tables -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                             Advanced Tables
+                        </div>
+                        <div class="panel-body">
+                         <div class="table-responsive">
+                              <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>Borrower ID</th>
+                                            <th>Last Name</th>
+                                            <th>First Name</th>     
+                                            <th>Password</th>
+                                            <th>Approved By</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="bookstable">
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <!--End Advanced Tables -->
+                </div>
+            </div>
+                
+        </div>
+               
+    </div>
+             <!-- /. PAGE INNER  -->
+            </div>
+         <!-- /. PAGE WRAPPER  -->
+     <!-- /. WRAPPER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <!--<script src="../scripts/jquery-1.10.2.js"></script>-->
+    <script src="../scripts/jquery-1.11.3.min.js"></script>
+      <!-- BOOTSTRAP SCRIPTS -->
+    <script src="../scripts/bootstrap.min.js"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="../scripts/jquery.metisMenu.js"></script>
+     <!-- DATA TABLE SCRIPTS -->
+    <script src="../scripts/jquery.tmpl.min.js"></script>
+    <script src="../scripts/jquery.tmpl.js"></script>
+    <script>
+		  $(document).ready(function () {
+	      $.getJSON("http://localhost:3000/admin/loggedIn", function(admin){
+            $('#intro').text("Welcome " + admin.alname + ", " + admin.afname);
+        });
+	     
+	      $('#dataTables-example').dataTable();
+	      $("#bookstable").empty();
+	     
+	      var t = $('#dataTables-example').DataTable();
+	      var borrowers = [];
+	      $.getJSON("http://localhost:3000/admin/getAllBorrowers", function(json) {
+          borrowers = json;
+          borrowers.forEach(function(borrower){
+            $.get("../scripts/allborrowerstemplate.html", function(data){
+                var x = $.tmpl(data, borrower);
+                t.row.add(x).draw(false);
+            });
+          });
+	      });
+		  });
+    </script>
+    <script src="../scripts/dataTables/jquery.dataTables.js"></script>
+    <script src="../scripts/dataTables/dataTables.bootstrap.js"></script>     
+         <!-- CUSTOM SCRIPTS -->
+    <script src="../scripts/custom.js"></script>   
+     
+</body>
+</html>

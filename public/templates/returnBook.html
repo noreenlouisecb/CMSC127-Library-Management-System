@@ -1,0 +1,14 @@
+<tr>
+	<td> ${ bookid } </td> 
+	<td> ${ bookname} </td> 
+	<td> ${ borrowdate } </td>  
+	<td> ${ duedate } </td>
+	<td>
+		<center>
+		<form method="POST"> 
+			<input type="hidden" name="book" value=${bookid} />
+			<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-share"></span></button>			 
+		</form>
+		</center>
+	</td>
+</tr>
